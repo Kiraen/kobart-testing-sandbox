@@ -5,6 +5,7 @@
       "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
         {
@@ -20,6 +21,7 @@
     {
       "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
+      "Tags": "skybox",
       "Enabled": true,
       "Components": [
         {
@@ -59,7 +61,7 @@
           "__type": "BoxCollider",
           "Center": "0,0,-5",
           "IsTrigger": false,
-          "Scale": "100,100,10",
+          "Scale": "1000,1000,10",
           "Static": false,
           "Surface": null
         }
@@ -96,6 +98,7 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -132,6 +135,7 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -168,71 +172,145 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Name": "Camera",
-      "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.1448582,0.2860239,0.4279631,0.8450171",
+      "Id": "34a77664-4f97-4ba6-8718-8ca86abcb753",
+      "Name": "Player",
+      "Position": "-124.3248,-217.4637,14.4322",
       "Enabled": true,
       "Components": [
         {
-          "__type": "CameraComponent",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
+          "__type": "SkinnedModelRenderer",
+          "AnimationGraph": null,
+          "BodyGroups": 341,
+          "BoneMergeTarget": null,
+          "CreateBoneObjects": false,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
         },
         {
-          "__type": "Bloom",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ]
+          "__type": "CharacterController",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "CitizenAnimationHelper",
+          "BodyWeight": 1,
+          "EyeSource": null,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "IkLeftFoot": null,
+          "IkLeftHand": null,
+          "IkRightFoot": null,
+          "IkRightHand": null,
+          "LookAt": null,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "go": "34a77664-4f97-4ba6-8718-8ca86abcb753",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "SnotPlayer",
+          "Animator": {
+            "_type": "component",
+            "go": "34a77664-4f97-4ba6-8718-8ca86abcb753",
+            "component_type": "CitizenAnimationHelper"
           },
-          "BloomCurve": [
+          "Camera": {
+            "_type": "gameobject",
+            "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+          },
+          "Controller": {
+            "_type": "component",
+            "go": "34a77664-4f97-4ba6-8718-8ca86abcb753",
+            "component_type": "CharacterController"
+          },
+          "EyePosition": "0,0,60.59996",
+          "JumpStrength": 400,
+          "RunSpeed": 250,
+          "WalkSpeed": 120
+        }
+      ],
+      "Children": [
+        {
+          "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+          "Name": "Camera",
+          "Position": "-100,0,64.40004",
+          "Rotation": "0.00000003719397,0.1305262,-0.00000000489668,0.9914449",
+          "Enabled": true,
+          "Components": [
             {
-              "y": 0.5
+              "__type": "CameraComponent",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 90,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
             },
             {
-              "x": 1,
-              "y": 1
+              "__type": "Bloom",
+              "BloomColor": {
+                "color": [
+                  {
+                    "c": "1,1,1,1"
+                  },
+                  {
+                    "t": 1,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "BloomCurve": [
+                {
+                  "y": 0.5
+                },
+                {
+                  "x": 1,
+                  "y": 1
+                }
+              ],
+              "Mode": "Additive",
+              "Strength": 0.5,
+              "Threshold": 0.5,
+              "ThresholdWidth": 0.5
+            },
+            {
+              "__type": "Tonemapping",
+              "ExposureCompensation": 0,
+              "MaximumExposure": 2,
+              "MinimumExposure": 1,
+              "Rate": 1
+            },
+            {
+              "__type": "Sharpen",
+              "Scale": 0.2
             }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Tonemapping",
-          "ExposureCompensation": 0,
-          "MaximumExposure": 2,
-          "MinimumExposure": 1,
-          "Rate": 1
-        },
-        {
-          "__type": "Sharpen",
-          "Scale": 0.2
+          ]
         }
       ]
     }
@@ -260,6 +338,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-08T13:32:32.3548959\u002B00:00",
+  "LastSaved": "2024-02-24T02:37:11.7632941\u002B01:00",
   "__references": []
 }
